@@ -1,0 +1,36 @@
+function phraseStats(phrase) {
+  let lengthCounter = 0;
+  let wordCounter = 0;
+  let vowelCounter = 0;
+  let isWord = false;
+
+  for (let char of phrase) {
+    lengthCounter++;
+
+    if (char === ' ') {
+      isWord = false;
+      continue;
+    }
+
+    if (!isWord) {
+      wordCounter++;
+      isWord = true;
+    }
+
+    if ('aeiou'.includes(char.toLowerCase())) {
+      vowelCounter++;
+    }
+  }
+
+  return {
+    length: lengthCounter,
+    words: wordCounter,
+    vowels: vowelCounter,
+  };
+}
+
+const inputPhrase = 'Bonjou, ceci est le premier checkpoint des compétences en algorithmyque.';
+const stats = phraseStats(inputPhrase);
+console.log(`Phrase length: ${stats.length}`);
+console.log(`Word count: ${stats.words}`);
+console.log(`Vowel count: ${stats.vowels}`);
